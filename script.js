@@ -99,12 +99,14 @@ async function weather(lat, lon) {
     weatherDeatail.appendChild(timeZone);
 
     const pressure = create();
-    pressure.textContent = `Pressure: ${data.main.pressure * 0.000987} atm`;
+    pressure.textContent = `Pressure: ${
+      data.main.pressure * (0.000987).toFixed(4)
+    } atm`;
     weatherDeatail.appendChild(pressure);
 
     const windDirestion = create();
     const dire = findWindDirection(data.wind.deg);
-    windDirestion.textContent = `Wind Direstion: ${dire}`;
+    windDirestion.textContent = `Wind Direction: ${dire}`;
     weatherDeatail.appendChild(windDirestion);
 
     /* const UVindex = create();
