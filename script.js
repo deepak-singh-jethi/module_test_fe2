@@ -15,15 +15,21 @@ fetchBtn.addEventListener("click", () => {
   weatherArea.classList.remove("disable");
 
   try {
-    navigator.geolocation.getCurrentPosition((location) => {
-      lat = location.coords.latitude;
-      lon = location.coords.longitude;
-      addLocation(lat, lon);
-      addmap(lat, lon);
-      weather(lat, lon);
-    });
+    navigator.geolocation.getCurrentPosition(
+      (location) => {
+        lat = location.coords.latitude;
+        lon = location.coords.longitude;
+        addLocation(lat, lon);
+        addmap(lat, lon);
+        weather(lat, lon);
+      },
+      (error) => {
+        console.error("Error getting user location:", error);
+        // Handle location error here
+      }
+    );
   } catch (error) {
-    console.log("user has declined the location sharing request");
+    console.error("An unexpected error occurred:", error);
   }
 });
 
@@ -104,7 +110,7 @@ async function weather(lat, lon) {
 
     weatherArea.appendChild(weatherDeatail);
   } catch (err) {
-    console.log("error in getting the weather detail");
+    console.log("error in getting the weather detail", err);
   }
 }
 
