@@ -3,23 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="./style.css" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="container" id="container">
-      <h1>Weather Api</h1>
-      <button id="btn">Fetch data</button>
+      <h1>Weather App</h1>
+      <button id="btn">
+        <span id="btn-text">Fetch data</span>
+        <span id="loading-spinner" class="hidden">Data Loading...</span>
+      </button>
     </div>
 
     <div class="result disable" id="result">
-      <h1>Welocome to the Weather App</h1>
+      <h1>Welcome to the Weather App</h1>
       <p>Here is your current Location</p>
       <div id="show_location"></div>
-
-      <!-- <div id="map_area"></div> -->
     </div>
+
     <div class="disable" id="weather_area"></div>
+
     <script src="script.js"></script>
   </body>
 </html>

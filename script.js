@@ -1,4 +1,7 @@
 const fetchBtn = document.getElementById("btn");
+const btnText = document.getElementById("btn-text");
+const loadingSpinner = document.getElementById("loading-spinner");
+
 const frontpage = document.getElementById("container");
 const resultPage = document.getElementById("result");
 const showLocation = document.getElementById("show_location");
@@ -10,13 +13,16 @@ let lon = null;
 let apiKey = "898b0d89ce8af9ab3e462a6034f11ef1";
 
 fetchBtn.addEventListener("click", () => {
-  frontpage.classList.add("disable");
-  resultPage.classList.remove("disable");
-  weatherArea.classList.remove("disable");
+  fetchBtn.disabled = true;
+  btnText.style.display = "none";
+  loadingSpinner.style.display = "inline";
 
   try {
     navigator.geolocation.getCurrentPosition(
       (location) => {
+        frontpage.classList.add("disable");
+        resultPage.classList.remove("disable");
+        weatherArea.classList.remove("disable");
         lat = location.coords.latitude;
         lon = location.coords.longitude;
         addLocation(lat, lon);
@@ -25,6 +31,7 @@ fetchBtn.addEventListener("click", () => {
       },
       (error) => {
         console.error("Error getting user location:", error);
+        alert("please enable location to get the details!");
         // Handle location error here
       }
     );
